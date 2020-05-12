@@ -2,7 +2,7 @@
 <template>
   <el-container>
     <el-header height='100px'>
-      <Header/>
+      Header
     </el-header>
     <el-container>
       <el-aside width="200px">
@@ -10,8 +10,6 @@
           router
           default-active="/"
           class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b"
@@ -24,7 +22,9 @@
             <el-menu-item index="/">echarts</el-menu-item>
             <el-submenu index="1-4">
               <template slot="title">组件</template>
-              <el-menu-item index="/config">按钮</el-menu-item>
+              <el-menu-item index="/carousel">轮播图</el-menu-item>
+              <el-menu-item index="/calendar">日历</el-menu-item>
+              <el-menu-item index="/table">表格</el-menu-item>
             </el-submenu>
           </el-submenu>
           <el-menu-item index="/application">
@@ -60,5 +60,12 @@ export default {
 };
 </script>
 <style>
+.el-header{
+      height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
 /* @import url(); 引入css类 */
 </style>

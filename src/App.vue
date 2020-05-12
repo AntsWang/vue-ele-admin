@@ -1,14 +1,20 @@
 <template>
-  <Home />
+  <router-view></router-view>
 </template>
 
 <script>
-import Home from './page/index'
+import Index from "./page/index";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    Home
-  }
+    Index
+  },
+  created() {
+    this.$request.get("htt://wwww/baidu.com").then(data => {
+      console.log(data);
+    });
+  },
+  methods: {}
 };
 </script>
 
