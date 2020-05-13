@@ -1,27 +1,19 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Login from '../page/login.vue';
-import Index from '../page/index.vue';
-import Home from '../page/home';
-import Config from '../page/config';
-import Application from '../page/application';
-import Carousel from '../components/carousel.vue';
-import Calendar from '../components/calendar.vue';
-import Table from '../components/table.vue';
 Vue.use(VueRouter);
 const routes = [
     { path: '/', redirect: '/login' },
-    { path: '/login', component: Login },
+    { path: '/login', component:() => import('../page/login') },
     {
         path: '/index',
-        component: Index,
+        component: () => import('../page/index'),
         children: [
-            { path: '/home', component: Home },
-            { path: '/config', component: Config, meta: { requiresAuth: true } },
-            { path: '/application', component: Application },
-            { path: '/carousel', component: Carousel },
-            { path: '/calendar', component: Calendar },
-            { path: '/table', component: Table }
+            { path: '/home', component: () => import('../page/home') },
+            { path: '/config', component: () => import('../page/config'), meta: { requiresAuth: true } },
+            { path: '/application', component: () => import('../page/application') },
+            { path: '/carousel', component: () => import('../components/carousel') },
+            { path: '/calendar', component: () => import('../components/calendar') },
+            { path: '/table', component: () => import('../components/table') }
         ]
     },
 
@@ -34,7 +26,7 @@ router.beforeEach((to, from, next) => {
     console.log(to, from.next);
     if (to.meta.requiresAuth) {
         console.log(localStorage.getItem("token"));
-        if (localStorage.getItem("token") != '') {
+        if (localStorage.getItem("token")) {
             next()
         } else {
             next({ path: '/login', query: to.fullPath })

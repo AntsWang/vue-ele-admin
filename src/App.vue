@@ -10,8 +10,10 @@ export default {
     Index
   },
   created() {
-    this.$request.get("htt://wwww/baidu.com").then(data => {
+    this.$request.get("/api").then(data => {
       console.log(data);
+    }).catch((err)=>{
+           console.log(err);
     });
   },
   methods: {}

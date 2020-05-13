@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 let instance = axios.create({
-    baseUrl: 'http://www.baidu.com',
+    baseUrl: process.env.NODE_ENV == 'development'?'http://www.baidu.com':'',
     timeout: 20000,
     header: {
 
@@ -32,7 +32,7 @@ let request = {
     },
     post(url, param) {
         return new Promise((resolve, reject) => {
-            instance.post(url, param).then((res) => {
+            instance.post(url, {method:'post',...param}).then((res) => {
                 resolve(res.data);
             }).catch((err) => {
                 reject(err)

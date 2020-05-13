@@ -19,7 +19,7 @@
               <i class="el-icon-location"></i>
               <span>导航一</span>
             </template>
-            <el-menu-item index="/">echarts</el-menu-item>
+            <el-menu-item index="/home">echarts</el-menu-item>
             <el-submenu index="1-4">
               <template slot="title">组件</template>
               <el-menu-item index="/carousel">轮播图</el-menu-item>

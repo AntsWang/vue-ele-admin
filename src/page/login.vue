@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import {mapActions } from 'vuex';
 export default {
   name: "Login",
   components: {},
@@ -49,6 +50,7 @@ export default {
           console.log(this.loginData);
           let { name, password } = this.loginData;
           if (name == "王二" && password == "123456") {
+            this.$store.dispatch("login");
             this.$storage.set("token", "123456789");
             this.$router.replace("/home");
           }
@@ -57,7 +59,8 @@ export default {
           return false;
         }
       });
-    }
+    },
+    ...mapActions(['login'])
   },
   filter: {},
   computed: {},
